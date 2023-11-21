@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isValid(String s) {
+        boolean result = false;
+
+        Map<Character, Character> hashMap = new HashMap<>();
+        hashMap.put(')','(');
+        hashMap.put('}','{');
+        hashMap.put(']','[');
+
+        Stack<Character> stack = new Stack<>();
+        
+            for (int i = 0; i < s.length(); i++) {
+                Character currenCharacter = s.charAt(i);
+                if (currenCharacter == '(' || currenCharacter == '{' || currenCharacter == '[') {
+                    stack.push(currenCharacter);
+                } else if(!stack.isEmpty() && stack.peek()==hashMap.get(currenCharacter)) {
+                    stack.pop();
+                    result=true;
+                }
+                else{
+                    result=false;
+                    break;
+                }
+
+            }
+            if(stack.size()!=0){
+            result=false;
+        }
+        
+        return result;
+    }
+}
