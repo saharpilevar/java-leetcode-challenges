@@ -1,0 +1,33 @@
+class Solution {
+    public int romanToInt(String s) {
+        
+       Map<String, Integer> symbols = new HashMap<>();
+        symbols.put("I", 1);
+        symbols.put("V", 5);
+        symbols.put("X", 10);
+        symbols.put("L", 50);
+        symbols.put("C", 100);
+        symbols.put("D", 500);
+        symbols.put("M", 1000);
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            String firstChar = s.substring(i, i + 1).toString();
+
+            String secondChar = (i == s.length() - 1) ? s.substring(i + 1, i + 1).toString()
+                    : s.substring(i + 1, i + 2).toString();
+            if ((firstChar.equals("I") && (secondChar.equals("V") || secondChar.equals("X")))
+            || (firstChar.equals("X") && (secondChar.equals("L") || secondChar.equals("C")))
+            ||(firstChar.equals("C") && (secondChar.equals("D") || secondChar.equals("M")))) {
+                i++;
+
+                result = result + (symbols.get(secondChar) - symbols.get(firstChar));
+
+            } else {
+                result = result + symbols.get(firstChar);
+
+            }
+
+        }
+        return result;
+    }
+}
