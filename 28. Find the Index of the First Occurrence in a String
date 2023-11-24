@@ -1,0 +1,16 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        //indexof returns the first occurance of substring
+        // do the same instead of my code
+        //return (haystack.indexOf(needle));
+        int index = -1;
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (needle.equals(haystack.substring(i, i+needle.length()))) {
+                index = i;
+                break;
+            }
+
+        }
+        return index;
+    }
+}
