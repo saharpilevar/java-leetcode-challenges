@@ -1,6 +1,6 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        // this is solved with XOR
+        //this is solved with XOR
 
         int xor = 0;
         for (int i = 0; i < nums.length; i++) {
